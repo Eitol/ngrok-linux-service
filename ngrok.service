@@ -1,0 +1,13 @@
+[Unit]
+Description=ngrok
+After=syslog.target network.target
+
+[Service]
+PrivateTmp=true
+Type=simple
+Restart=always
+ExecStart=/opt/ngrok/ngrok --log /opt/ngrok/ngrok.log --config /opt/ngrok/ngrok.conf start %i
+ExecStop=/usr/bin/killall ngrok
+
+[Install]
+WantedBy=multi-user.target

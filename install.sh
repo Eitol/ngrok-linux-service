@@ -13,9 +13,9 @@ mkdir ${INSTALL_PATH}
 
 # check params
 if [ "$#" -eq 1 ]; then
-    sed -e -i "s/<add_your_token_here>/$1/g" "./config.yml"
-
+    sed -i -e "s/<add_your_token_here>/$1/g" "./config.yml"
 fi
+
 cp "./config.yml" "${INSTALL_PATH}"
 
 # Copy ngrok executable

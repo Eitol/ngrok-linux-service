@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 
-INSTALL_PATH="/opt"
-
-# check params
-if [ "$#" -ne 1 ]; then
-    echo "you must indicate the authtoken as a parameter."
-    echo "example: bash install 8lbGOyaS5a8nQPDDDrrzeu_2fPgG7JTPmpt5ZtsUdHjT"
-    exit -1
-fi
+INSTALL_PATH="/opt/ngrok"
 
 # check the arch
-ARCH=`uname -p`
+ARCH="arm" #`uname -p`
 if [[ ${ARCH} != "arm" && ${ARCH} != "x86_64" ]]; then
     echo "ERROR: This script cant'n be run in this cpu architecture. Valid: arm or x86_64"
     exit -1
 fi
+
+mkdir ${INSTALL_PATH}
+
+# check params
+if [ "$#" -eq 1 ]; then
+    sed -e -i "s/<add_your_token_here>/$1/g" "./config.yml"
+
+fi
+cp "./config.yml" "${INSTALL_PATH}"
 
 # Copy ngrok executable
 cp "./bin/ngrok-${ARCH}" "${INSTALL_PATH}/ngrok"

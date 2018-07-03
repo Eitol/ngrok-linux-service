@@ -3,7 +3,7 @@
 INSTALL_PATH="/opt/ngrok"
 
 # check the arch
-ARCH=`uname -p`
+ARCH=`uname -m`
 if [[ ${ARCH} != "arm" && ${ARCH} != "x86_64" ]]; then
     echo "ERROR: This script cant'n be run in this cpu architecture. Valid: arm or x86_64"
     exit -1

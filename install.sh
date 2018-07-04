@@ -2,6 +2,8 @@
 
 INSTALL_PATH="/opt/ngrok"
 
+rm -rf ${INSTALL_PATH}
+
 # check the arch
 ARCH=`uname -m`
 if [[ ${ARCH} != "arm" && ${ARCH} != "x86_64" ]]; then
@@ -20,6 +22,7 @@ cp "./config.yml" "${INSTALL_PATH}"
 
 # Copy ngrok executable
 cp "./bin/ngrok-${ARCH}" "${INSTALL_PATH}/ngrok"
+chmod +x ${INSTALL_PATH}/ngrok
 
 # Install service
 cp "./ngrok.service" "/etc/systemd/system/"

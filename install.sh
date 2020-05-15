@@ -6,7 +6,7 @@ rm -rf ${INSTALL_PATH}
 
 # check the arch
 ARCH=`uname -m`
-if [[ ${ARCH} != "armv7l" ]]; then
+if [[ ${ARCH} == "armv7l" ]]; then
     ARCH="arm"
 fi
 
